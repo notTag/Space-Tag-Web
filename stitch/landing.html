@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Space Tag</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed-variant": "#004493",
+                        "on-primary": "#002e69",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#adc6ff",
+                        "secondary": "#c2c1ff",
+                        "primary": "#adc6ff",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#00285c",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-container": "#3630bf",
+                        "surface": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline-variant": "#414755",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-secondary-fixed": "#0c006b",
+                        "surface-container": "#201f1f",
+                        "on-secondary-container": "#b1b1ff",
+                        "secondary-fixed": "#e2dfff",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "tertiary-container": "#909095",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#4b8eff",
+                        "on-tertiary-container": "#282a2e",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005bc1",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#353534",
+                        "tertiary": "#c6c6cb",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed-dim": "#c2c1ff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#1800a7",
+                        "on-secondary-fixed-variant": "#332dbc",
+                        "on-tertiary": "#2f3034",
+                        "surface-dim": "#131313",
+                        "outline": "#8b90a0",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "surface-bright": "#3a3939"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-page": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "12px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Inter"],
+                        "mono-label": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "mono-code": ["JetBrains Mono"],
+                        "body-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { lineHeight: "30px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "mono-label": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "title-sm": ["17px", { lineHeight: "22px", fontWeight: "600" }],
+                        "display-lg": ["34px", { lineHeight: "41px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "mono-code": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+                        "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(26, 27, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-mesh-bg {
+            background: radial-gradient(circle at top right, rgba(75, 142, 255, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(54, 48, 191, 0.15), transparent 40%);
+            background-color: #0D0D0D;
+        }
+        .pill-active {
+            background: rgba(75, 142, 255, 0.2);
+            border: 1px solid rgba(75, 142, 255, 0.5);
+            box-shadow: 0 0 10px rgba(75, 142, 255, 0.2);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(75, 142, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface gradient-mesh-bg min-h-screen font-body-md overflow-x-hidden pt-[80px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-lg py-sm bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="font-display-lg text-display-lg font-bold text-on-surface">Space Tag</div>
+<div class="hidden md:flex gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm" href="#">CLI</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm" href="#">GitHub</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+            Download DMG
+        </button>
+</nav>
+<main class="max-w-7xl mx-auto px-lg py-xl flex flex-col gap-[80px]">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center mt-[60px]">
+<h1 class="text-[64px] leading-[72px] font-bold tracking-tight mb-md bg-clip-text text-transparent bg-gradient-to-r from-on-surface to-on-surface-variant">
+                Name your Spaces.
+            </h1>
+<p class="text-headline-md font-headline-md text-on-surface-variant max-w-2xl mb-xl">
+                Give your virtual desktops a soul with Space Tag. Seamlessly integrated into your macOS menu bar.
+            </p>
+<div class="flex gap-md mb-[60px]">
+<button class="bg-primary-container text-on-primary-container px-xl py-md rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined">download</span>
+                    Download DMG
+                </button>
+<button class="glass-panel text-on-surface px-xl py-md rounded-lg font-title-sm text-title-sm hover:bg-surface-variant transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined">code</span>
+                    View on GitHub
+                </button>
+</div>
+<!-- Menu Bar Mockup -->
+<div class="glass-panel rounded-full px-sm py-xs flex gap-xs items-center shadow-2xl backdrop-blur-3xl transform scale-125 my-md border-outline-variant/30">
+<div class="px-md py-xs rounded-full bg-surface-container text-on-surface font-mono-label text-mono-label border border-outline-variant/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">palette</span> Design
+                </div>
+<div class="px-md py-xs rounded-full pill-active text-primary font-mono-label text-mono-label flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">terminal</span> Code
+                </div>
+<div class="px-md py-xs rounded-full bg-surface-container text-on-surface font-mono-label text-mono-label border border-outline-variant/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">chat</span> Chat
+                </div>
+<div class="px-md py-xs rounded-full bg-surface-container text-on-surface font-mono-label text-mono-label border border-outline-variant/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">dns</span> Terminal
+                </div>
+</div>
+</section>
+<!-- Product GIF Placeholder -->
+<section class="glass-panel rounded-xl overflow-hidden aspect-video relative flex items-center justify-center border-outline-variant/20 shadow-2xl bg-surface-container-low">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface to-surface-container opacity-50 z-0"></div>
+<div class="relative z-10 flex flex-col items-center gap-md">
+<span class="material-symbols-outlined text-[48px] text-primary animate-pulse">animation</span>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Interactive Space Switch Animation Placeholder</p>
+</div>
+<img alt="Abstract dark glassmorphic background with blurred neon blue and purple lights, resembling a futuristic digital workspace. The lighting is soft and volumetric, creating a sense of depth and technical elegance. The overall mood is sleek, modern, and focused, aligning with a high-end macOS utility aesthetic." class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay pointer-events-none" data-alt="Abstract dark glassmorphic background with blurred neon blue and purple lights, resembling a futuristic digital workspace. The lighting is soft and volumetric, creating a sense of depth and technical elegance. The overall mood is sleek, modern, and focused, aligning with a high-end macOS utility aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqKFVx9BNK_qjwLMOF9O8Esr2qiMo6Dy0VhzKicD-kHETw6eR1y1mwDHBTg5rb3y4qb9pE5DRbqf7RznSChQ2uUxA4IVm9MJHivDHJU26zrV67SH2W-oQ-BFzqFjLEMF068dCUpBh9JxqaaZbLGNhcfTCetu--ATDfH0eCSr_DVyOBUGLA4GzgP01Lmn9OcRfWJ86-liul03Tfsy-H8WXamciWeDRP5ecX6YphIE3Lu7Sco28MVz1kp7aRhqnocVXrnVPlKgzQO0"/>
+</section>
+<!-- CLI Experience -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center mt-xl">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-md">The CLI Experience</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg leading-relaxed">
+                    Rename spaces on the fly directly from your terminal. Space Tag CLI works instantly without requiring System Integrity Protection (SIP) modifications. Perfect for script automation and power user workflows.
+                </p>
+</div>
+<div class="glass-panel rounded-xl p-md border-outline-variant/20 font-mono-code text-mono-code">
+<div class="flex gap-sm mb-md border-b border-outline-variant/20 pb-sm">
+<button class="text-primary pb-xs border-b-2 border-primary px-xs">Homebrew</button>
+<button class="text-on-surface-variant hover:text-on-surface px-xs pb-xs transition-colors">Curl</button>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg flex items-center justify-between group">
+<code class="text-secondary">brew install space-tag-cli</code>
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Feature Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg mt-xl">
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md hover:bg-surface-variant/30 transition-colors border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_tree</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Auto-tagging</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automatically tags spaces with your repo name when you cd into a project directory.</p>
+</div>
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md hover:bg-surface-variant/30 transition-colors border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Inline Rename</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Right-click any pill to rename it instantly. <kbd class="px-1 py-0.5 bg-surface-container rounded text-xs">enter</kbd> to save, <kbd class="px-1 py-0.5 bg-surface-container rounded text-xs">esc</kbd> to cancel.</p>
+</div>
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md hover:bg-surface-variant/30 transition-colors border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">monitor</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Multi-display Aware</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Single bar pinned to focus. Optimized for notched MacBooks and flat external displays seamlessly.</p>
+</div>
+</section>
+<!-- AI Agent Integration -->
+<section class="mt-xl glass-panel p-xl rounded-2xl relative overflow-hidden border-outline-variant/20 border-l-4 border-l-primary">
+<div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-primary-container/10 to-transparent pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl">
+<div class="flex items-center gap-sm mb-md text-primary">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-mono-label text-mono-label tracking-wider uppercase">Agent Completion Flash</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-md">Never miss a completed task.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                    Flashes a space’s pill when your long-running tasks in Claude Code or other CLI agents finish running in the background. Stay focused without constantly checking back.
+                </p>
+<div class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container text-on-surface font-mono-label text-mono-label border border-primary/30 shadow-[0_0_10px_rgba(75,142,255,0.2)]">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Task Complete: npm run build
+                </div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-page flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest border-t border-outline-variant/20 mt-xl">
+<div class="flex flex-col gap-sm items-center md:items-start">
+<div class="font-headline-md text-headline-md text-on-surface">Space Tag</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Space Tag. Built for macOS.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">GitHub</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Docs</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Installers</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Changelog</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy</a>
+</div>
+</footer>
+</body></html>
