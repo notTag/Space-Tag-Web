@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { DMG_DOWNLOAD_URL } from '../links'
 
 interface SpacePill {
   icon: string
@@ -28,12 +29,14 @@ const activePill = ref(1)
       bar.
     </p>
     <div class="flex gap-md mb-[60px]">
-      <button
+      <a
+        :href="DMG_DOWNLOAD_URL"
+        download
         class="bg-primary-container text-on-primary-container px-xl py-md rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm shadow-lg shadow-primary-container/20"
       >
         <span class="material-symbols-outlined">download</span>
         Download DMG
-      </button>
+      </a>
       <button
         class="glass-panel text-on-surface px-xl py-md rounded-lg font-title-sm text-title-sm hover:bg-surface-variant transition-all flex items-center gap-sm"
       >

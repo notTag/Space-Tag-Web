@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DMG_DOWNLOAD_URL } from '../links'
+
 interface NavLink {
   label: string
   to: string
@@ -39,11 +41,13 @@ const githubUrl = 'https://github.com/notTag/Space-Tag-CLI'
         GitHub
       </a>
     </div>
-    <button
+    <a
+      :href="DMG_DOWNLOAD_URL"
+      download
       class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm"
     >
       <span class="material-symbols-outlined text-[18px]">download</span>
       Download DMG
-    </button>
+    </a>
   </nav>
 </template>
