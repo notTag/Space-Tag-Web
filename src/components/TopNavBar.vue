@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DMG_DOWNLOAD_URL } from '../links'
+import { DMG_DOWNLOAD_URL, GITHUB_EXTERNAL_LINK } from '../links'
 
 interface NavLink {
   label: string
@@ -7,19 +7,23 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
+  { label: 'Home', to: '/' },
   { label: 'Features', to: '/features' },
   { label: 'CLI', to: '/cli' },
   { label: 'Documentation', to: '/docs' },
 ]
 
-const githubUrl = 'https://github.com/notTag/Space-Tag-CLI'
 </script>
 
 <template>
   <nav
     class="fixed top-0 w-full z-50 flex justify-between items-center px-lg py-sm bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10"
   >
-    <RouterLink to="/" class="font-display-lg text-display-lg font-bold text-on-surface">
+    <RouterLink
+      to="/"
+      class="flex items-center gap-sm font-display-lg text-display-lg font-bold text-on-surface"
+    >
+      <img src="/space-tag-icon.png" alt="" class="h-[1.1em] w-auto" />
       Space Tag
     </RouterLink>
     <div class="hidden md:flex gap-xl">
@@ -28,12 +32,12 @@ const githubUrl = 'https://github.com/notTag/Space-Tag-CLI'
         :key="link.to"
         :to="link.to"
         class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm"
-        active-class="text-primary"
+        exact-active-class="text-primary"
       >
         {{ link.label }}
       </RouterLink>
       <a
-        :href="githubUrl"
+        :href="GITHUB_EXTERNAL_LINK"
         target="_blank"
         rel="noopener"
         class="text-on-surface-variant hover:text-primary transition-colors font-title-sm text-title-sm"
@@ -47,7 +51,7 @@ const githubUrl = 'https://github.com/notTag/Space-Tag-CLI'
       class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm"
     >
       <span class="material-symbols-outlined text-[18px]">download</span>
-      Download DMG
+      Download
     </a>
   </nav>
 </template>
