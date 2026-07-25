@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DMG_DOWNLOAD_URL } from '../links'
+import { DMG_DOWNLOAD_URL, GITHUB_EXTERNAL_LINK } from '../links'
 
 interface SpacePill {
   icon: string
@@ -35,16 +35,19 @@ const activePill = ref(1)
         class="bg-primary-container text-on-primary-container px-xl py-md rounded-lg font-title-sm text-title-sm hover:opacity-80 transition-all btn-glow flex items-center gap-sm shadow-lg shadow-primary-container/20"
       >
         <span class="material-symbols-outlined">download</span>
-        Download DMG
+        Download
       </a>
-      <button
+      <a
+        :href="GITHUB_EXTERNAL_LINK"
+        target="_blank"
+        download
         class="glass-panel text-on-surface px-xl py-md rounded-lg font-title-sm text-title-sm hover:bg-surface-variant transition-all flex items-center gap-sm"
       >
         <span class="material-symbols-outlined">code</span>
         View on GitHub
-      </button>
+      </a>
     </div>
-    <!-- Menu bar mockup — click a pill to switch the active space -->
+    <!-- Menu bar click a pill to switch the active space -->
     <div
       class="glass-panel rounded-full px-sm py-xs flex gap-xs items-center shadow-2xl backdrop-blur-3xl transform scale-125 my-md border-outline-variant/30"
     >
