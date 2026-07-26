@@ -40,7 +40,7 @@ const activePill = ref(1)
       <a
         :href="GITHUB_EXTERNAL_LINK"
         target="_blank"
-        download
+        rel="noopener"
         class="glass-panel text-on-surface px-xl py-md rounded-lg font-title-sm text-title-sm hover:bg-surface-variant transition-all flex items-center gap-sm"
       >
         <span class="material-symbols-outlined">code</span>
