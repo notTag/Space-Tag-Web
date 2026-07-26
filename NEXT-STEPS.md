@@ -4,25 +4,41 @@ Manual steps for Nick. Ordered by dependency — distribution first, because the
 site's CTAs (`brew install`, `curl | sh`, "Download DMG") point at things that
 don't exist yet.
 
-## 1. Homebrew distribution for Space-Tag-CLI
+## 1. Homebrew distribution for Space-Tag-CLI — DONE
 
-The site advertises `brew install space-tag-cli`. Cheapest path is a personal tap
-(no formula review, instant):
+Shipped as a personal tap: [notTag/homebrew-tap](https://github.com/notTag/homebrew-tap),
+formula `Formula/space-tag.rb`, pinned to Space-Tag-CLI `v0.4.0`.
 
-1. Cut a tagged release in Space-Tag-CLI: `git tag v0.1.0 && git push --tags`,
-   then `gh release create v0.1.0` (Homebrew pulls the release tarball).
-2. Create a tap repo: `gh repo create notTag/homebrew-space-tag --public`.
-3. Add `Formula/space-tag-cli.rb` pointing at the release tarball
-   (`url`, `sha256` via `shasum -a 256 <tarball>`). Declare deps:
-   `depends_on "yabai"`, `depends_on "sketchybar"`, `depends_on "jq"`.
-   Note: yabai/sketchybar live in `koekeishiya/formulae` and `FelixKratz/formulae`
-   taps — either document those taps as prerequisites or vendor the dep check
-   into the formula's `caveats`.
-4. Install command becomes `brew install notTag/space-tag/space-tag-cli`.
-   → Update `CliExperience.vue` Homebrew tab to match (currently shows the
-   short form, which only works after homebrew-core acceptance — long-term goal).
-5. Later: submit to homebrew-core once the repo has notability (30+ stars,
-   30+ forks guideline) — then `brew install space-tag-cli` works as advertised.
+Install command (both parts required — see below):
+
+```sh
+brew tap notTag/tap && brew install notTag/tap/space-tag
+```
+
+Three things came out different from the plan above:
+
+- **Tap is `notTag/homebrew-tap`, not `homebrew-space-tag`** — one tap for all
+  notTag CLIs rather than one tap per project.
+- **Formula is `space-tag`, not `space-tag-cli`** — it matches the binary name.
+- **`yabai`/`sketchybar` are NOT formula deps.** Brew 6 refuses to resolve
+  formulae from untrusted third-party taps, so declaring them made the whole
+  formula fail to load. The CLI's own `install.sh` already installs both from
+  their pinned official taps, so the deps were a duplicate that only bought
+  users a trust wall. Only `jq` (homebrew-core) is declared.
+
+`brew tap` cannot be dropped from the one-liner: brew 6 does not auto-tap on a
+fully-qualified name — `brew install notTag/tap/space-tag` on a fresh machine
+errors with `This command requires the tap nottag/tap`.
+
+The formula pulls the GitHub **source archive**, not the `space-tag-cli-X.Y.Z.tar.gz`
+release asset. That asset packs only `sketchybar yabai bin shell`, so `space-tag
+version` and `space-tag uninstall` (which read `../VERSION` and `../uninstall.sh`)
+would both break under brew.
+
+Still open: submit to homebrew-core once the repo clears notability (~75+
+stars/forks/watchers) — then bare `brew install space-tag` works. Core also
+generally rejects formulae needing a manual post-install step, which the
+required `install.sh` run is, so this may never be viable.
 
 ## 2. Host install.sh for the curl one-liner
 
@@ -64,8 +80,8 @@ Also required for a public DMG regardless of host:
 - `HeroSection.vue` + `TopNavBar.vue`: point "Download DMG" buttons at the real
   DMG URL.
 - `HeroSection.vue`: point "View on GitHub" at the CLI repo.
-- `CliExperience.vue`: update Homebrew/Curl commands to the real ones from
-  steps 1–2.
+- `CliExperience.vue`: Homebrew command is real (step 1 done); Curl command
+  still points at the unhosted `spacetag.app/install.sh` from step 2.
 - Deploy the site itself (Vercel is the obvious fit for Vite + static).
 - Point `spacetag.app` DNS at the deployment.
 
