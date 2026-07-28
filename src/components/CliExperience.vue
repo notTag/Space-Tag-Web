@@ -4,7 +4,7 @@ import { ref } from 'vue'
 type InstallMethod = 'Homebrew' | 'Curl'
 
 const commands: Record<InstallMethod, string> = {
-  Homebrew: 'brew install space-tag-cli',
+  Homebrew: 'brew tap notTag/tap && brew install notTag/tap/space-tag',
   Curl: 'curl -fsSL https://spacetag.app/install.sh | sh',
 }
 
