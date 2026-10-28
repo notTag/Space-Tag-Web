@@ -435,9 +435,6 @@ onUnmounted(() => {
             stroke-width="1.7"
           />
         </svg>
-        <div class="desktop-label">
-          SPACE {{ active + 1 }}<span>{{ labels[active] }}</span>
-        </div>
       </div>
       <div class="demo-toolbar">
         <div class="playback">
@@ -1005,19 +1002,6 @@ onUnmounted(() => {
   font-size: 8px;
   line-height: 1.6;
   color: #8b8671;
-}
-.desktop-label {
-  position: absolute;
-  bottom: 13px;
-  left: 6%;
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: #dde4f5a0;
-}
-.desktop-label span {
-  margin-left: 12px;
-  letter-spacing: 0.3px;
-  color: #e2e9ff;
 }
 .demo-cursor {
   position: absolute;
