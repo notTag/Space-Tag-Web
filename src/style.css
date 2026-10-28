@@ -133,11 +133,6 @@ body {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .pill-active {
-    background: rgba(75, 142, 255, 0.2);
-    border: 1px solid rgba(75, 142, 255, 0.5);
-    box-shadow: 0 0 10px rgba(75, 142, 255, 0.2);
-  }
   .btn-glow:hover {
     box-shadow: 0 0 15px rgba(75, 142, 255, 0.4);
   }
