@@ -1,20 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { DMG_DOWNLOAD_URL, GITHUB_EXTERNAL_LINK } from '../links'
-
-interface SpacePill {
-  icon: string
-  label: string
-}
-
-const pills: SpacePill[] = [
-  { icon: 'palette', label: 'Design' },
-  { icon: 'terminal', label: 'Code' },
-  { icon: 'chat', label: 'Chat' },
-  { icon: 'dns', label: 'Terminal' },
-]
-
-const activePill = ref(1)
 </script>
 
 <template>
@@ -46,25 +31,6 @@ const activePill = ref(1)
         <span class="material-symbols-outlined">code</span>
         View on GitHub
       </a>
-    </div>
-    <!-- Menu bar click a pill to switch the active space -->
-    <div
-      class="glass-panel rounded-full px-sm py-xs flex gap-xs items-center shadow-2xl backdrop-blur-3xl transform scale-125 my-md border-outline-variant/30"
-    >
-      <button
-        v-for="(pill, i) in pills"
-        :key="pill.label"
-        class="px-md py-xs rounded-full font-mono-label text-mono-label flex items-center gap-xs cursor-pointer transition-all"
-        :class="
-          i === activePill
-            ? 'pill-active text-primary'
-            : 'bg-surface-container text-on-surface border border-outline-variant/20'
-        "
-        @click="activePill = i"
-      >
-        <span class="material-symbols-outlined text-[14px]">{{ pill.icon }}</span>
-        {{ pill.label }}
-      </button>
     </div>
   </section>
 </template>

@@ -46,7 +46,7 @@ const projects = [
     app: 'Travel Guide',
     url: 'weekend.travel / kyoto',
     title: 'Somewhere new awaits.',
-    subtitle: 'A few days away. A whole new perspective.',
+    subtitle: 'Small change. More room to think.',
     icon: 'landscape',
     color: '#a4d5bd',
     cards: ['Stay', 'Explore', 'Eat well'],
@@ -219,13 +219,6 @@ onUnmounted(() => {
     class="product-demo"
     aria-label="Interactive Space Tag walkthrough"
   >
-    <div class="demo-heading">
-      <span class="eyebrow"
-        ><span class="live-dot"></span> A LITTLE CLARITY GOES A LONG WAY</span
-      >
-      <h2>Same spaces. A sense of place.</h2>
-      <p>From a number to a name. See your projects find their space.</p>
-    </div>
     <div
       class="demo-frame"
       :style="{
@@ -383,7 +376,7 @@ onUnmounted(() => {
                 </div>
               </div>
             </article>
-            <article class="notes-window">
+            <article v-if="active !== 2" class="notes-window">
               <div class="window-chrome">
                 <span class="traffic" aria-hidden="true"
                   ><i></i><i></i><i></i></span
@@ -409,6 +402,11 @@ onUnmounted(() => {
                 </div>
               </div>
             </article>
+            <div v-if="active === 2" class="closing-message">
+              <span class="eyebrow">A LITTLE CLARITY GOES A LONG WAY</span>
+              <h2>Same spaces. A sense of place.</h2>
+              <p>From a number to a name. See your projects find their space.</p>
+            </div>
           </div>
         </Transition>
         <svg
@@ -489,37 +487,44 @@ onUnmounted(() => {
   max-width: 1040px;
   margin: auto;
 }
-.demo-heading {
-  text-align: center;
-  margin: 12px 0 28px;
-}
 .eyebrow {
   font-size: 10px;
   letter-spacing: 1.8px;
   font-weight: 600;
 }
-.demo-heading .eyebrow {
-  color: #adc6ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.closing-message {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  width: 43%;
+  max-width: 340px;
+  padding: 24px;
+  color: #453b20;
+  background: linear-gradient(145deg, #fff1b2, #f1d879);
+  border-top: 18px solid #e8cc70;
+  border-radius: 2px 2px 15px 2px;
+  box-shadow: 3px 12px 28px #0004;
+  transform: rotate(-3deg);
 }
-.live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #adc6ff;
-  box-shadow: 0 0 12px #7ba5ff;
+.closing-message .eyebrow {
+  color: #786532;
+  font-size: clamp(6px, .85vw, 9px);
+  letter-spacing: 1.3px;
 }
-.demo-heading h2 {
-  font-size: clamp(25px, 4vw, 36px);
-  line-height: 1.2;
-  letter-spacing: -1.3px;
-  margin: 14px 0 10px;
+.closing-message h2 {
+  font-size: clamp(15px, 2.2vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -.7px;
+  margin: 12px 0 10px;
 }
-.demo-heading p {
-  color: #9fa6b9;
+.closing-message p {
+  color: #6e5c30;
+  font-size: clamp(8px, 1.1vw, 12px);
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  .closing-message { right: 0; width: 51%; padding: 13px; border-top-width: 12px; }
 }
 .demo-frame {
   overflow: hidden;
@@ -1218,7 +1223,7 @@ input:focus-visible {
   .demo-footnote {
     font-size: 9px;
   }
-  .demo-heading .eyebrow {
+  .closing-message .eyebrow {
     font-size: 8px;
   }
 }
