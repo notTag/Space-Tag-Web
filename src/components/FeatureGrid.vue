@@ -21,7 +21,7 @@ const features: Feature[] = [
     iconBg: 'bg-secondary-container/20',
     iconColor: 'text-secondary',
     title: 'Inline Rename',
-    description: 'Right-click any pill to rename it instantly. Enter to save, Esc to cancel.',
+    description: 'Right-click any pill to rename it instantly. Press Enter or click outside to save; Esc cancels.',
   },
   {
     icon: 'monitor',

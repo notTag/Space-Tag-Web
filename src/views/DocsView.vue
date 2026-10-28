@@ -12,7 +12,7 @@ const sections: DocSection[] = [
     id: 'install-app',
     icon: 'download',
     title: 'Install the App',
-    body: 'Download the DMG, drag Space Tag to Applications, and launch it. Pills appear in your menu bar immediately. The app is the zero-config path — no terminal required.',
+    body: 'Download the DMG, drag Space Tag to Applications, and launch it. Tags appear in their configured position once your spaces are ready, with a smooth expansion. The app is the zero-config path — no terminal required.',
   },
   {
     id: 'install-cli',
@@ -33,7 +33,7 @@ const sections: DocSection[] = [
     id: 'first-tag',
     icon: 'label',
     title: 'Your First Tag',
-    body: 'Tag the current space by name, or cd into a repo and let auto-tagging do it for you. Right-click a pill in the menu bar to rename it inline — Enter saves, Esc cancels.',
+    body: 'Tag the current space by name, or cd into a repo and let auto-tagging do it for you. Right-click a pill in the menu bar to rename it inline — Enter or clicking outside saves, Esc cancels. Clear the text to restore the space number.',
     code: ['space-tag my-space', 'cd ~/code/my-project   # auto-tags the space "my-project"'],
   },
   {

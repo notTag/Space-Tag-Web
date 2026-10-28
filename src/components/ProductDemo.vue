@@ -94,7 +94,7 @@ const caption = computed(() =>
       ? 'Three projects. Three names. Find your focus at a glance.'
       : localTick.value < 20
         ? `Space ${active.value + 1}: all the windows for your ${project.value.name.toLowerCase()} project.`
-        : `Right-click the tag to edit inline. Enter saves; Esc cancels.`,
+        : `Right-click the tag to edit inline. Enter or clicking outside saves; Esc cancels.`,
 )
 let timer: ReturnType<typeof setInterval> | undefined
 let observer: IntersectionObserver | undefined
@@ -140,7 +140,7 @@ function selectSpace(index: number) {
   menuOpen.value = false
   pause()
   manual.value = true
-  editing.value = false
+  if (editing.value) save()
   slideDirection.value = index >= active.value ? 1 : -1
   active.value = index
 }
@@ -159,12 +159,9 @@ async function rename() {
   input.value?.select()
 }
 function save() {
+  if (!editing.value) return
   const name = draft.value.trim()
-  if (!name) {
-    input.value?.focus()
-    return
-  }
-  labels.value[active.value] = name
+  labels.value[active.value] = name || String(active.value + 1)
   editing.value = false
 }
 function togglePlayback() {
@@ -313,7 +310,7 @@ onUnmounted(() => {
                 autocomplete="off"
                 :style="{ width: `${Math.max(3, draft.length)}ch` }"
                 @keydown.esc.stop.prevent="editing = false"
-                @blur="editing = false"
+                @blur="save"
               />
             </form>
             <span
@@ -681,12 +678,23 @@ onUnmounted(() => {
   max-width: calc(100% - 90px);
   width: max-content;
   position: absolute;
-  top: 5px;
+  top: 16px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  animation: tag-reveal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   gap: 5px;
   z-index: 3;
+}
+@keyframes tag-reveal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85, 0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 .tag-bar button,
 .inline-tag-editor {
