@@ -65,7 +65,7 @@ onUnmounted(() => clearInterval(timer))
         <div class="menu-right" aria-hidden="true"><span class="material-symbols-outlined">wifi</span><span class="material-symbols-outlined">battery_horiz_075</span><span class="menu-clock">9:41 AM</span><img src="/space-tag-icon.png" alt="" /></div>
       </div>
       <div class="space-labels" :class="{ right: position === 'right' }" aria-label="Space Tag labels">
-        <span v-for="(label, index) in labels" :key="index" :class="{ selected: index === 0, external: index > 2 }">{{ label }}</span>
+        <span v-for="(label, index) in labels" :key="index" :class="{ selected: index === 0 }">{{ label }}</span>
       </div>
       <div class="terminal-window">
         <header><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span>Space Tag — zsh</span><span class="window-size" aria-hidden="true">⌘ 1</span></header>
@@ -96,16 +96,15 @@ onUnmounted(() => clearInterval(timer))
 <style scoped>
 .terminal-demo { max-width: 1040px; margin: auto; border: 1px solid #303640; border-radius: 18px; overflow: hidden; background: #0d1119; color: #dce4f3; }
 .desktop { height: 550px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 75% 85%, #5d74906b, transparent 60%), radial-gradient(ellipse at 15% 100%, #384e6b, transparent 75%), linear-gradient(140deg, #111c2b, #273e59 65%, #172436); }
-.menu-bar { height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 10px; background: #0b1429a8; border-bottom: 1px solid #ffffff0c; }
+.menu-bar { height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 10px; background: #0b1429a8; border-bottom: 1px solid #ffffff0c; }
 .menu-left, .menu-right { display: flex; align-items: center; gap: 12px; }
 .apple-mark { font-size: 18px; }
 .menu-right .material-symbols-outlined { font-size: 15px; }
 .menu-right img { width: 19px; height: 19px; object-fit: contain; }
-.space-labels { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; max-width: 45%; }
+.space-labels { max-width: calc(100% - 90px); width: max-content; position: absolute; top: 16px; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 5px; z-index: 3; }
 .space-labels.right { top: 43px; left: auto; right: 10px; transform: none; }
-.space-labels span { padding: 4px 10px; border: 1px solid #ffffff18; border-radius: 15px; background: #192437; font: 10px ui-monospace, monospace; white-space: nowrap; }
-.space-labels .selected { background: #294470; border-color: #739cff; color: #c0d4ff; }
-.space-labels .external { border-color: #88a6ad66; }
+.space-labels span { box-sizing: border-box; border: 1px solid transparent; background: #303044; border-radius: 3px; color: #d4d5e9; padding: 1px 10px; font-size: 12px; line-height: 18px; min-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; min-width: 0; text-align: center; }
+.space-labels .selected { background: #83b9f4; color: #17243c; }
 .terminal-window { position: absolute; top: 108px; left: 12%; width: 76%; border: 1px solid #ffffff30; border-radius: 12px; overflow: hidden; box-shadow: 0 28px 65px #0007; background: #10151eef; }
 header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; font-size: 11px; color: #b6bdcb; background: #242c38; border-bottom: 1px solid #ffffff0a; }
 .lights { display: flex; gap: 7px; }
@@ -126,5 +125,5 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 button:disabled { opacity: .3; cursor: default; }
 button:focus-visible { outline: 2px solid #adc6ff; outline-offset: 3px; }
 .caption { padding: 18px 24px; font-size: 13px; color: #aabbd1; min-height: 75px; }
-@media (max-width: 700px) { .menu-extra, .menu-clock, .menu-right .material-symbols-outlined { display: none; } .menu-left { gap: 6px; } .space-labels { max-width: 62%; left: 57%; } .space-labels span { padding: 4px 6px; font-size: 9px; } .terminal-window { left: 5%; width: 90%; } .terminal-screen { padding: 18px; font-size: 11px; } .welcome { font-size: 9px; } }
+@media (max-width: 700px) { .menu-extra, .menu-clock, .menu-right .material-symbols-outlined { display: none; } .menu-left { gap: 6px; } .space-labels span { padding: 2px 7px; font-size: 9px; } .terminal-window { left: 5%; width: 90%; } .terminal-screen { padding: 18px; font-size: 11px; } .welcome { font-size: 9px; } }
 </style>
